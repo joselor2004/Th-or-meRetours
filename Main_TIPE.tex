@@ -340,9 +340,19 @@ Après cette proposition, on considèrera que toutes les composantes connexes pa
 
 \subsection{Construction de chemins particuliers}
 
+\begin{tcolorbox}[colback = yellow!60!white, colframe = orange!90!white, title = Définition 4]
+    Soit $V \subset \mathbb{R}^2$ ouvert\\
+    $V$ est d'adhérence intraconnexe si pour tout $x, y \in \overline{V}$ il existe un chemin $c$ de $x$ à $y$
+    tel que $c(]0, 1[) \subset V$
+\end{tcolorbox}
+
 \begin{tcolorbox}[colback = purple!20!white, colframe = purple!60!white, title = Proposition 6]
     Soit $\alpha$ un chemin à retours finis de $x$ à $y$, où $x \neq y$\\
     Il existe $\beta$ un chemin injectif de $x$ à $y$ tel que $\beta \subset \alpha$
+    Soit $V \subset \mathbb{R}^2$ ouvert connexe par arcs, tel que pour tout $x \in \operatorname{Fr}(V)$
+    et $\varepsilon > 0$, $\mathcal{B}(x, \varepsilon) \cap V$ a un nombre fini de composantes connexes par
+    arcs\\
+    $V$ est alors d'adhérence intraconnexe
 \end{tcolorbox}
 
 \begin{proof}
@@ -359,6 +369,42 @@ Après cette proposition, on considèrera que toutes les composantes connexes pa
     On définit alors, comme $\beta_k^{-1}(\{z_{k+1} \})$ est un compact par continuité :
     \[ t^{-}_k = \min(\beta_k^{-1}(\{z_{k+1} \})) \text{ et } t^{+}_k = \max(\beta_k^{-1}(\{z_{k+1} \}))\]
     On définit alors
+    Soient $x, y \in V$\\
+    Il est clair qu'il existe un chemin $c$ de $x$ à $y$ vérifiant la propriété donnée par la définition 4\\
+    On se contentera d'examiner le cas où $x \in \operatorname{Fr}(V)$ et $y \in V$
+    \\~\\
+    Posons $x_0 = y$\\
+    On suppose pour $n \in \mathbb{N}$, $x_0, ..., x_n \in V$ et $c_0, ..., c_{n-1}$ construits tels que pour tout
+    $k \in \llbracket 0, n-1 \rrbracket$, $c_k$ est un chemin de $x_{k-1}$ à $x_k$ dans
+    $\mathcal{B}(x, \frac{1}{k}) \cap V$ (si $k-1 = 0$ on remplace $\frac{1}{k-1}$ par  $+\infty$)
+    et $x_n \in \mathcal{B}(x, \frac{1}{n})$\\
+    On suppose également, avec la même convention, que $U_n$ la composante connexe par arcs de $x_n$ dans
+    $\mathcal{B}(x, \frac{1}{n}) \cap V$ vérifie $x \in \operatorname{Fr}(U_n)$
+    \\~\\
+    Notons que $\mathcal{B}(x, \frac{1}{n+1}) \cap U_n$ a un nombre fini de composantes connexes par arcs :
+    en effet, toute composante connexe par arcs de cet ensemble est une composante connexe par arcs de
+    $\mathcal{B}(x, \frac{1}{n+1}) \cap V$. En effet on peut écrire, en notant $\mathcal{C}$ l'ensemble des
+    composantes connexes par arcs de $\mathcal{B}(x, \frac{1}{n+1}) \cap U_n$ et $U_n^c$ le complémentaire dans
+    $\mathcal{B}(x, \frac{1}{n}) \cap V$ de $U_n$
+    \begin{align*}
+        \mathcal{B}\left(x, \frac{1}{n+1} \right) \cap V &= \mathcal{B}\left(x, \frac{1}{n+1}\right) \cap
+        \left(\mathcal{B}\left(x, \frac{1}{n}\right)\cap V\right)\\
+        &= \left(\mathcal{B}\left(x, \frac{1}{n+1}\right) \cap U_n\right) \sqcup
+        \left(\mathcal{B}\left(x, \frac{1}{n+1}\right) \cap U_n^c\right)\\
+        &= \bigsqcup_{U \in \mathcal{C}} U \sqcup \left(\mathcal{B}\left(x, \frac{1}{n+1}\right) \cap U_n^c\right)
+    \end{align*}
+    et utiliser la Proposition 5 pour conclure. Ainsi l'ensemble $\mathcal{C}$ est nécessairement fini car
+    $\mathcal{B}(x, \frac{1}{n+1}) \cap V$ a un nombre fini de composantes connexes par arcs par hypothèse
+    \\~\\
+    Comme $x \in \operatorname{Fr}(U_n)$ et par le cas d'égalité de la Proposition 3, car le nombre de composantes
+    considéré est fini, il existe $U_{n+1}$ une composante connexe par arcs de $\mathcal{B}(x, \frac{1}{n+1}) \cap U_n$
+    telle que $x \in \operatorname{Fr}(U_{n+1})$\\
+    On se donne alors $x_{n+1} \in U_{n+1}$ et comme $U_{n+1} \subset U_n$ et que cet ensemble est connexe par arcs,
+    on se donne $c_{n+1}$ un chemin de $x_n$ à $x_{n+1}$ dans $U_n$
+    \\~\\
+    On a ainsi construit une suite points $(x_n)_{n \in \mathbb{N}}$ convergeant vers $x$ et des chemins
+    $(c_n)_{n \in \mathbb{N}}$ les reliant entre eux, respectivement dans $\mathcal{B}(x, \frac{1}{n})$\\
+    On pose alors
     \[ c : \begin{array}{cl}
         [0, 1 - (t^{+}_k - t^{-}_k)] &\longrightarrow \mathbb{R}^2\\
         t &\longmapsto \left\{ \begin{array}{cl}

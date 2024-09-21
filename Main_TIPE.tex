@@ -347,8 +347,6 @@ Après cette proposition, on considèrera que toutes les composantes connexes pa
 \end{tcolorbox}
 
 \begin{tcolorbox}[colback = purple!20!white, colframe = purple!60!white, title = Proposition 6]
-    Soit $\alpha$ un chemin à retours finis de $x$ à $y$, où $x \neq y$\\
-    Il existe $\beta$ un chemin injectif de $x$ à $y$ tel que $\beta \subset \alpha$
     Soit $V \subset \mathbb{R}^2$ ouvert connexe par arcs, tel que pour tout $x \in \operatorname{Fr}(V)$
     et $\varepsilon > 0$, $\mathcal{B}(x, \varepsilon) \cap V$ a un nombre fini de composantes connexes par
     arcs\\
@@ -356,19 +354,6 @@ Après cette proposition, on considèrera que toutes les composantes connexes pa
 \end{tcolorbox}
 
 \begin{proof}
-    On écrit $I_{\alpha} = \{z_1, ..., z_n\}$, où $n = |I_{\alpha}|$\\
-    Montrons par récurrence sur $k \in \llbracket 0, n \rrbracket$, qu'il existe un chemin $\beta_k$ à retours finis de $x$ à $y$
-    tel que $I_{\beta_k} \subset \{ z_{k+1}, ..., z_n \}$\\
-    On a pour $k = 0$, que $\beta_k = \alpha$ convient
-    \\~\\
-    Supposons la propriété vraie pour $k \in \llbracket 0, n-1 \rrbracket$\\
-    On se donne alors $\beta_k$ tel que $I_{\beta_k} \subset \{ z_{k+1}, ..., z_n \}$\\
-    Si $I_{\beta_k} = \varnothing$, $\beta_k$ convient pour le rang $k+1$
-    \\~\\
-    Sinon, on suppose sans perte de géneralité que $z_{k+1} \in I_{\beta_k}$\\
-    On définit alors, comme $\beta_k^{-1}(\{z_{k+1} \})$ est un compact par continuité :
-    \[ t^{-}_k = \min(\beta_k^{-1}(\{z_{k+1} \})) \text{ et } t^{+}_k = \max(\beta_k^{-1}(\{z_{k+1} \}))\]
-    On définit alors
     Soient $x, y \in V$\\
     Il est clair qu'il existe un chemin $c$ de $x$ à $y$ vérifiant la propriété donnée par la définition 4\\
     On se contentera d'examiner le cas où $x \in \operatorname{Fr}(V)$ et $y \in V$
@@ -406,32 +391,9 @@ Après cette proposition, on considèrera que toutes les composantes connexes pa
     $(c_n)_{n \in \mathbb{N}}$ les reliant entre eux, respectivement dans $\mathcal{B}(x, \frac{1}{n})$\\
     On pose alors
     \[ c : \begin{array}{cl}
-        [0, 1 - (t^{+}_k - t^{-}_k)] &\longrightarrow \mathbb{R}^2\\
-        t &\longmapsto \left\{ \begin{array}{cl}
-            \beta_k(t) &\text{ si } t \in [0, t^{-}_k]\\
-            \beta_k(t + t^{+}_k - t^{-}_k) &\text{ sinon }
-        \end{array} \right.
     \end{array} \]
-    et
-    \[ \beta_{k+1} : \begin{array}{cl}
-        [0, 1] &\longrightarrow \mathbb{R}^2\\
-        t &\longmapsto c(t(1-(t^{+}_k - t^{-}_k)))
-    \end{array}\]
-    $[0, 1 - (t^{+}_k - t^{-}_k)]$ n'est pas réduit à un point car $x \neq y$, donc $t^{+}_k - t^{-}_k < 1$\\
-    $\beta_{k+1}$ est bien continue car $c(t^{-}_k) = c(t^{+}_k) = z_{k+1}$\\
-    Puis, $z_{k+1} \notin I_{\beta_{k+1}}$ : en effet, par minimalité et maximalité de $t^{-}_k$ et $t^{+}_k$,
-    on a pour $t \in [0, 1 - (t^{+}_k - t^{-}_k)]$, $t \neq t^{-}_k$, que $c(t) \neq z_{k+1}$\\
-    Comme $\beta_{k+1} \subset \beta_k$, on a bien $I_{\beta_{k+1}} \subset \{z_{k+2}, ..., z_n \}$
     \\~\\
-    Donc il existe bien un chemin $\beta$ de $x$ à $y$ injectif, en appliquant la propriété au rang $n$ ($I_{\beta} = \varnothing$)
-
 \end{proof}
-
-\begin{figure}[h]
-    \caption{Illustration de la construction de $\beta_{k+1}$ à partir de $\beta_k$}
-    \centering
-    \includegraphics[width = 0.75 \textwidth]{Reduction de retours.png}
-\end{figure}
 
 \begin{tcolorbox}[colback = purple!20!white, colframe = purple!60!white, title = Proposition 7]
     Soit $\gamma$ une courbe de Jordan, $x, y \in \gamma$\\
@@ -480,28 +442,7 @@ Après cette proposition, on considèrera que toutes les composantes connexes pa
     \includegraphics[width = 0.3\textwidth]{Chemin radial.png}
 \end{figure}
 
-\begin{tcolorbox}[colback = purple!20!white, colframe = purple!60!white, title = Proposition]
-    Soit $\alpha$ un chemin injectif de $x$ à $y$\\
-    On suppose qu'il existe un chemin $c$ injectif de $y$ à $x$ tel que $c^{-1}(\alpha)$ est fini\\
-    Alors il existe, $\beta$ un chemin injectif de $y$ à $x$ tel que
-    \[ \beta(]0, 1[) \cap \alpha = \varnothing \]
-\end{tcolorbox}
 
-\begin{proof}
-    On écrit $\{t_0, ..., t_p\} = c^{-1}(\alpha)$, triés par ordre croissant (donc $t_0 = 0$ et $t_p = 1$)\\
-    On constuira une suite de chemins qui concaténés donneront le chemin $\beta$ souhaité
-    \\~\\
-    En gros ce qu'on fait : on va le faire pour $t_1$\\
-    On trouve une boule assez petite pour avoir un $\alpha$ connexe par arcs\\
-    Puis si on a "pic" (avant $c(t_1)$ et après dans la même comp. de cette boule privée de $\alpha$), on court circuite juste
-    le moment ou le $c$ touche $\alpha$ (car on peut tout mettre dans la comp. interne d'une courbe de J.)\\
-    Si $c$ traverse $\alpha$, alors on dit que en prenant $c([t_1, t_2])$ et $\alpha$ on a une courbe de J., que l'on longe jusqu'à $t_2$\\
-    Puis on continue à longer jusqu'à retrouver un bout de $c$ (ça se trouve ça fait des pics de l'autre côté)\\
-    Si on ne retrouve jamais $c$, alors rdv près de $\alpha(0)$\\
-    Le lemme de la ficelle permet alors de créer un chemin (par itération + limite douille) qui va jusqu'à $\alpha(0)$ à partir
-    d'une boule telle que l'on a juste une ficelle qui termine en $\alpha(0)$
-
-\end{proof}
 
 \section{Etude des lacets à retours finis}
 

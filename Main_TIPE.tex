@@ -755,6 +755,29 @@ On montre ensuite que dans le cas de la subdivision minimale, un tel $V$ existe 
     Donc par la Proposition 4, on a $\gamma(]t_n, t_{n+1}[) \subset V$
 \end{proof}
 
+\begin{tcolorbox}[colback = purple!20!white, colframe = purple!60!white, title = Lemme 2]
+    Soit $\gamma$ un lacet à retours finis et $t \in [0, 1]$\\
+    Soit $V \in C_{\gamma}(t)$ et $x \in \operatorname{Fr}(V)$\\
+    Alors il existe $r > 0$ tel que pour tout $\varepsilon \in ]0, r[$, $\mathcal{B}(x, \varepsilon) \cap V$
+    a un nombre fini de composantes connexes par arc
+\end{tcolorbox}
+
+\begin{proof}
+    Si $t = 0$, on a la propriété
+    \\~\\
+    Sinon, on se donne d'abord comme $\gamma$ est à retours finis $r > 0$ tel que $I_{\gamma} \cap \mathcal{B}(x, r) \subset
+    \{ x \}$ et tel que $\gamma([0, t]) \backslash \mathcal{B}(x, r) \neq \varnothing$
+    \\~\\
+    Supposons à présent par l'absurde que pour tout $r > 0$ il existe $\varepsilon \in ]0, r[$ tel que
+    $\mathcal{B}(x, \varepsilon) \cap V$ ait une infinité de composantes connexes par arcs\\
+    Comme $\operatorname{Fr}(V) \subset \gamma([0, t])$, on choisit $c \in [0, t]$ tel que $\gamma(c) = x$\\
+    Puis on pose
+    \[ a_0 = \inf\{ t' \in [0, 1] \mid \gamma([t', c]) \subset \mathcal{B}(x, r) \} \text{ et }
+    b_0 = \sup\{ t' \in [0, 1] \mid \gamma([c, t']) \subset \mathcal{B}(x, r) \} \]
+    Comme $\gamma([0, t]) \backslash \mathcal{B}(x, r) \neq \varnothing$, on a $[a_0, b_0] \neq [0, t]$\\
+
+\end{proof}
+
 \section{Le théorème}
 
 Nous avons à présent tout les outils pour démontrer le théorème

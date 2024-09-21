@@ -391,8 +391,25 @@ Après cette proposition, on considèrera que toutes les composantes connexes pa
     $(c_n)_{n \in \mathbb{N}}$ les reliant entre eux, respectivement dans $\mathcal{B}(x, \frac{1}{n})$\\
     On pose alors
     \[ c : \begin{array}{cl}
+        \mathbb{R}^+ &\longrightarrow V\\
+        t &\longmapsto c_{\lfloor t \rfloor}(t - \lfloor t \rfloor)
     \end{array} \]
+    On pour tout $t \geq 0$, $c(t) \in \mathcal{B}(x, \frac{1}{\lfloor t \rfloor})$ donc
+    $\displaystyle \lim_{t \rightarrow +\infty} c(t) = x$
     \\~\\
+    On pose alors
+    \[ d : \begin{array}{cl}
+        [0, 1] &\longrightarrow \overline{V}\\
+        t &\longmapsto \left\{
+            \begin{array}{ll}
+                c \left( \frac{t}{1-t} \right) &\text{si } t \in [0, 1[\\
+                x &\text{si } t = 1
+            \end{array} \right.
+    \end{array} \]
+    Par composition et par le calcul de limite précédent, $d$ est continue\\
+    On a bien, comme $c \subset V$ que $d(]0, 1[) \subset V$\\
+    Ainsi $d$ vérifie la propriété donnée par la Définition 4 et est un chemin de $y$ à $x$\\
+    Au total, on a bien que $V$ est d'adhérence intraconnexe
 \end{proof}
 
 \begin{tcolorbox}[colback = purple!20!white, colframe = purple!60!white, title = Proposition 7]

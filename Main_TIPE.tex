@@ -755,6 +755,32 @@ On montre ensuite que dans le cas de la subdivision minimale, un tel $V$ existe 
     Donc par la Proposition 4, on a $\gamma(]t_n, t_{n+1}[) \subset V$
 \end{proof}
 
+\begin{tcolorbox}[colback = purple!20!white, colframe = purple!60!white, title = Proposition ?]
+    Soit $\gamma$ un chemin à retours finis et $t \in [0, 1]$.\\
+    Il existe $I \subset [0, 1]$ un intervalle fermé non dégénéré ayant $t$ pour une de ses bornes
+    tel que $\gamma_{\mid I}$ est injective
+\end{tcolorbox}
+
+\begin{proof}
+    Notons $x = \gamma(t)$. Comme $\gamma$ est à retours finis, $I_{\gamma}$ est fini, donc
+    il existe $r > 0$ tel que $|\mathcal{B}(x, r) \cap I_{\gamma}| \leq 1$. Notons alors
+    $A = \gamma^{-1}(\mathcal{B}(x, r))$.
+    \\~\\
+    Supposons à présent par l'absurde que pour tout intervalle $I$ vérifiant les
+    conditions de l'énoncé, $\gamma_{\mid I}$ n'y est pas injective. On suppose sans
+    perte de généralité que $t < 1$. Ainsi pour tout $d > 0$, on a $[t, t+d] \cap [0, 1]$
+    qui est bien un intervalle vérifiant les conditions de l'énoncé.
+    \\~\\
+    $A$ étant ouvert par continuité de $\gamma$, il existe donc $D > 0$ tel que
+    $[t, t+D] \subset A$.\\
+    Pour $0 < d \leq D$, $\gamma_{\mid [t, t+d]}$ n'est pas injective. Comme
+    $I_{\gamma} \cap \gamma(A) \subset \{ x \}$, il existe $t_d \in [t, t+d] \cap [0, 1]$
+    tel que $\gamma(t_d) = x$. Cela étant vrai pour tout $D \geq d > 0$, on en déduit que $S(x)$
+    est infini. Absurde, $\gamma$ est à retours finis.
+    \\~\\
+    Un tel intervalle $I$ existe donc
+\end{proof}
+
 \begin{tcolorbox}[colback = purple!20!white, colframe = purple!60!white, title = Lemme 2]
     Soit $\gamma$ un lacet à retours finis et $a \in [0, 1]$\\
     Soit $V \in C_{\gamma}(a)$ et $x \in \operatorname{Fr}(V)$\\

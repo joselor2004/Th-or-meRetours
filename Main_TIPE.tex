@@ -1,12 +1,15 @@
-\documentclass{article}
+\documentclass{scrartcl}
 \usepackage[a4paper, total={7in, 10in}]{geometry}
 \usepackage{stmaryrd}
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{amsthm}
+\usepackage{hyperref}
 \usepackage[french]{babel}
 \usepackage{tcolorbox}
 \usepackage{graphicx}
+\usepackage{Macros}
+
 \begin{document}
 \begin{flushleft}
 
@@ -26,33 +29,36 @@
 \section{Définitions usuelles et notations}
 
 Dans tout le document, on notera $\sqcup$ les unions disjointes\\
-\begin{tcolorbox}[colback = yellow!60!white, colframe = orange!90!white, title = Définition]
+
+\begin{def*}
     Un chemin de $x$ à $y$ est une application $\gamma : [0, 1] \longrightarrow \mathbb{R}^2$ continue telle que $\gamma(0) = x$ et $\gamma(1) = y$
-\end{tcolorbox}
-\vspace{0.5cm}
+\end{def*}
+
 Si $\gamma$ est un chemin, on dénotera également son image par $\gamma$ 
-\begin{tcolorbox}[colback = yellow!60!white, colframe = orange!90!white, title = Définition]
+\begin{def*}
     Un lacet est un chemin $\gamma$ tel que $\gamma(0) = \gamma(1)$
-\end{tcolorbox}
-\vspace{0.5cm}
-\begin{tcolorbox}[colback = yellow!60!white, colframe = orange!90!white, title = Définition]
+\end{def*}
+
+\begin{def*}
     Une courbe de Jordan est un lacet injectif sur $[0, 1[$
-\end{tcolorbox}
+\end{def*}
+
 Le théorème de Jordan s'énonce alors comme
-\begin{tcolorbox}[colback = purple!20!white, colframe = purple!60!white, title = Théorème de Jordan]
-Soit $\gamma$ une courbe de Jordan\\
-Alors $\mathbb{R}^2 \backslash \gamma$ a deux composantes connexes par arcs ouvertes, l'une bornée, l'autre non, ayant toutes deux pour
-frontière $\gamma$
-\end{tcolorbox}
-\vspace{0.5cm}
+\begin{theorem*}
+    Soit $\gamma$ une courbe de Jordan.
+    Alors $\mathbb{R}^2 \backslash \gamma$ a deux composantes connexes par arcs ouvertes, l'une bornée, l'autre non, ayant toutes deux pour
+    frontière $\gamma$
+\end{theorem*}
+
+Si $\gamma$ est une courbe de Jordan, on notera $\Int{\gamma}$ et $\Ext{\gamma}$ ses composantes bornées
+et non bornées délimitées.
 Le théorème suivant vient compléter l'information donnée par le théorème de Jordan
-\begin{tcolorbox}[colback = purple!20!white, colframe = purple!60!white, title = Théorème de Jordan-Schönflies]
-    Soit $\gamma$ une courbe de Jordan\\
-    Notons $V$ sa composante bornée\\
-    Il existe un homéomorphisme de $\mathbb{R}^2$ dans lui même, tel que l'image de $V$ par ce dernier
+\begin{theorem*}
+    Soit $\gamma$ une courbe de Jordan.
+    Il existe un homéomorphisme de $\mathbb{R}^2$ dans lui même, tel que l'image de $\Int{\gamma}$ par ce dernier
     soit $\mathcal{B}(0, 1)$ et celle de $\gamma$ soit $\mathcal{S}(0, 1)$
-\end{tcolorbox}
-\vspace{0.5cm}
+\end{theorem*}
+
 
 \begin{figure}[h]
     \caption{Illustration du théorème de Jordan}
@@ -70,25 +76,25 @@ l'hypothèse d'injectivité ?
 
 On va ici développer des outils pour quantifier à quel point un lacet "s'autointersecte", et définir un ensemble de lacets particuliers
 \\~\\
-\begin{tcolorbox}[colback = yellow!60!white, colframe = orange!90!white, title = Définition 1]
-    Soit $\gamma$ un chemin\\
+\begin{definir}
+    Soit $\gamma$ un chemin.
     On note
     \[I_{\gamma} = \{ x \in \gamma \mid \exists t_1 \neq t_2 \in [0, 1], x = \gamma(t_1) = \gamma(t_2) \}\]
     l'ensemble des intersections de $\gamma$
-\end{tcolorbox}
-\vspace{0.5cm}
-\begin{tcolorbox}[colback = yellow!60!white, colframe = orange!90!white, title = Définition 2]
-    Soit $x \in I_{\gamma}$\\
+\end{definir}
+
+\begin{definir}
+    Soit $x \in I_{\gamma}$.
     Si $\gamma^{-1}(\{x\})$ est fini, on note $S(x)$ le "nombre de sorties" de $x$ l'entier suivant
     \[S(x) = |\gamma^{-1}(\{x\})|\]
-\end{tcolorbox}
-\vspace{0.5cm}
-\begin{tcolorbox}[colback = yellow!60!white, colframe = orange!90!white, title = Définition 3]
-    Soit $\gamma$ un chemin\\
+\end{definir}
+
+\begin{definir}
+    Soit $\gamma$ un chemin.
     Si $I_{\gamma}$ est fini et pour tout $x \in I_{\gamma}$, $S(x)$ est défini, on dira que $\gamma$ est à retours finis
     et on note le nombre de retours
     \[r(\gamma) = \sum_{x \in I_{\gamma}} (S(x) - 1)\]
-\end{tcolorbox}
+\end{definir}
 
 Notons que selon ces définitions, $\gamma(0)$, le point ou le lacet se referme, compte comme une intersection, donc $\gamma(0) \in I_{\gamma}$\\
 Le nombre de lacets du lacet Figure 2 est alors de 4\\
@@ -102,10 +108,10 @@ Le nombre de lacets du lacet Figure 2 est alors de 4\\
 
 Notons que le lacet Figure 2 délimite 4 composantes connexes par arc bornées\\
 On cherchera alors à montrer le théorème suivant
-\begin{tcolorbox}[colback = purple!20!white, colframe = purple!60!white, title = Théorème des retours]
-    Soit $\gamma$ un lacet à retours finis\\
+\begin{theorem*}[des retours]
+    Soit $\gamma$ un lacet à retours finis.
     $\gamma$ délimite $r(\gamma)$ composantes connexes par arcs bornées
-\end{tcolorbox}
+\end{theorem*}
 
 L'idée générale de la démonstration sera basée sur le constat suivant : lorsque l'on trace le lacet, à la main par exemple, chaque fois
 que le nombre de retours augmente, une nouvelle composante connexe par arcs est créée. On formalisera par la suite ce constat
@@ -114,47 +120,17 @@ que le nombre de retours augmente, une nouvelle composante connexe par arcs est 
 
 Avant de démontrer le théorème, on se dote d'abord de quelques propriétés utiles des connexes par arc de $\mathbb{R}^2$
 
-\subsection{Une géneralisation des valeurs intermédiaires}
-
-\begin{tcolorbox}[colback = purple!20!white, colframe = purple!60!white, title = Proposition 1]
-    Soit $A$ un connexe par arcs et $B \subset \mathbb{R}^2$ tel que $A \cap B \neq \varnothing$
-    et $A \backslash B \neq \varnothing$\\
+\begin{prop} \label{passDouane}
+    Soit $A$ un connexe et $B \subset \mathbb{R}^2$ tel que $A \cap B \neq \varnothing$
+    et $A \backslash B \neq \varnothing$.
     Alors $A \cap \operatorname{Fr}(B) \neq \varnothing$
-\end{tcolorbox}
-
-\begin{proof}
-Soient $x \in A \backslash B$, $y \in A \cap B$\\
-Soit $c$ un chemin de $x$ à $y$ dans $A$ par connexité par arcs\\
-Donc $c(0) \in A \backslash B$, on peut alors considérer
-\begin{equation*}
-    t_0 = \sup \{ t \in [0, 1] \mid c(t) \in A \backslash B \}
-\end{equation*}
-Si $t_0 \neq 0$ et $t_0 \neq 1$ :\\
-Alors :
-\begin{equation}
-    \forall s \in ]0, t_0[, \exists t \in ]s, t_0[,
-c(t) \in A \backslash B
-\end{equation}
-et
-\begin{equation}
-\forall t \in ]t_0, 1[, c(t) \in A \cap B
-\end{equation}
-Par continuité de $c$ et (2) et (3) toute boule ouverte centrée en $c(t_0)$ rencontre $A \cap B$ et $A \backslash B$\\
-On obtient alors que $c(t_0) \in \operatorname{Fr}(A \cap B) \subset \operatorname{Fr}(B)$
-\\~\\
-Si $t_0 = 0$, on a juste (3) et le fait que toute boule centrée en $c(0)$
-contient $c(0)$ et rencontre donc $A \backslash B$.\\
-On aboutit alors au même résultat\\
-Si $t_0 = 1$ même chose, mais avec (2)
-
-\end{proof}
+\end{prop}
 
 \subsection{Composantes connexes par arcs d'un ouvert}
 
-\begin{tcolorbox}[colback = purple!20!white, colframe = purple!60!white, title = Proposition 2]
-    Soit $V$ un ouvert\\
-    Ses composantes connexes par arcs sont ouvertes
-\end{tcolorbox}
+\begin{prop} \label{CCPAouv}
+    Soit $V$ un ouvert. Ses composantes connexes par arcs sont ouvertes
+\end{prop}
 
 \begin{proof}
     Si $V$ est connexe par arcs, on a déjà le résultat
@@ -172,16 +148,14 @@ Si $t_0 = 1$ même chose, mais avec (2)
     \\~\\
     Donc $U$ est ouvert
 \end{proof}
-\vspace*{0.5cm}
 
 Après cette proposition, on considèrera que toutes les composantes connexes par arc manipulées seront des ouverts
-\\~\\
-\begin{tcolorbox}[colback = purple!20!white, colframe = purple!60!white, title = Proposition 3]
-    Soit $U$ un ouvert et $(V_i)_{i \in I}$ ses composantes connexes par arc\\
+\begin{prop} \label{frontCCPAinfront}
+    Soit $U$ un ouvert et $(V_i)_{i \in I}$ ses composantes connexes par arc.
     On a
     \[ \bigcup_{i \in I} \operatorname{Fr}(V_i) \subset \operatorname{Fr}(U) \]
     On a l'égalité si $I$ est fini
-\end{tcolorbox}
+\end{prop}
 
 \begin{proof}
     Soit $i \neq j \in I$\\
@@ -202,34 +176,34 @@ Après cette proposition, on considèrera que toutes les composantes connexes pa
     Si $I$ est fini l'inclusion se transforme en égalité
 \end{proof}
 
-\begin{tcolorbox}[colback = purple!20!white, colframe = purple!60!white, title = Proposition 4]
+\begin{prop} \label{CPAinCCPA}
     Soit $U$ un ouvert et $V$ une composante connexe par arcs de $U$\\
     Soit $A$ un connexe par arcs tel que $A \subset U$ et $A \cap V \neq \varnothing$\\
     Alors $A \subset V$
-\end{tcolorbox}
+\end{prop}
 
 \begin{proof}
     Supposons par l'absurde que ce soit faux\\
     Ainsi $A$ rencontre $V$ et son complémentaire\\
-    Par connexité et la proposition 1, $A$ rencontre $\operatorname{Fr}(V)$\\
-    Par la Proposition 3, $\operatorname{Fr}(V) \subset \operatorname{Fr}(U) \subset \mathbb{R}^2 \backslash U$ car $U$ est ouvert\\
+    Par connexité et la proposition \ref{passDouane}, $A$ rencontre $\operatorname{Fr}(V)$\\
+    Par la Proposition \ref{frontCCPAinfront}, $\operatorname{Fr}(V) \subset \operatorname{Fr}(U) \subset \mathbb{R}^2 \backslash U$ car $U$ est ouvert\\
     Donc $A$ rencontre le complémentaire de $U$, absurde par inclusion
     \\~\\
     Donc $A \subset V$
 \end{proof}
 
-\begin{tcolorbox}[colback = purple!20!white, colframe = purple!60!white, title = Proposition 5]
+\begin{prop} \label{CCPAouvRec}
     Soit $A \subset \mathbb{R}^2$ tel que
     \[ A = \bigsqcup_{i \in I} V_i \]
     où les $(V_i)_{i \in I}$ sont des ouverts connexes par arcs\\
     Les composantes connexes par arcs de $A$ sont les $(V_i)_{i \in I}$
-\end{tcolorbox}
+\end{prop}
 
 \begin{proof}
     Soit $i \in I$\\
     Comme $A$ s'écrit comme union de ses composantes connexes par arcs, il existe $U$ une composante connexe par arcs de $A$
     tel que $U \cap V_i \neq \varnothing$\\
-    Par la Proposition 4, $V_i \subset U$
+    Par la Proposition \ref{CPAinCCPA}, $V_i \subset U$
     \\~\\
     Supposons que $U \neq V_i$, donc $U$ rencontre le complémentaire de $V_i$ dans $A$\\
     Donc $U$ rencontre $\operatorname{Fr}(V_i)$\\
@@ -243,7 +217,6 @@ Après cette proposition, on considèrera que toutes les composantes connexes pa
 \end{proof}
 
 \subsection{Lemme de la ficelle}
-
 
 \begin{tcolorbox}[colback = purple!20!white, colframe = purple!60!white, title = Lemme]
     Soit $V$ un ouvert borné et $c$ un chemin à valeur dans $\overline{A}$\\
@@ -414,12 +387,13 @@ Après cette proposition, on considèrera que toutes les composantes connexes pa
 
 \begin{tcolorbox}[colback = purple!20!white, colframe = purple!60!white, title = Proposition 7]
     Soit $\gamma$ une courbe de Jordan, $x, y \in \gamma$\\
-    On écrit $x = \gamma(t_0)$ et $y = \gamma(t_1)$ et on suppose $t_0 < t_1$\\
+    On écrit $x = \gamma(t_0)$ et $y = \gamma(t_1)$ et on suppose $t_0 \leq t_1$\\
     Soit $V$ une des composantes connexes par arcs de $\mathbb{R}^2 \backslash \gamma$\\
     Pour tout $R > 0$, il existe $r \in ]0, R[$ tel que pour tout
     $u \in \mathcal{B}(x, r) \cap V$ et $v \in \mathcal{B}(y, r) \cap V$,
     il existe un chemin $c$ de $u$ à $v$ dans $V$ vérifiant
     \[ \forall t \in [0, 1], d(c(t), \gamma([t_0, t_1])) < R \]
+    Il faut aussi pouvoir contourner un bout de courbe qui touche qu'à un endroit
 \end{tcolorbox}
 
 \begin{proof}
